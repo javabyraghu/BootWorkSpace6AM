@@ -1,0 +1,8 @@
+my:
+  app:
+    db:
+      driver: ORACLE-PROD
+      url: JDBC-ORCL-PORD
+      username: SAMPLE-PROD
+#     password: ROOT
+#     database: TESTDB

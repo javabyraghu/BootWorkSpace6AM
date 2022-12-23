@@ -1,0 +1,31 @@
+my:
+  app:
+    db:
+      driver: Oracle
+      url: JDBC-ORCL
+
+---
+my:
+  app:
+    db:
+      driver: MySQL-TEST
+      url: JDBC-MYSQL-TEST
+
+spring:
+  config:
+    activate:
+      on-profile: 
+      - qa
+      - prod
+      
+---
+my:
+  app:
+    db:
+      driver: Postgress-TEST
+      url: JDBC-Postgress-TEST
+
+spring:
+  config:
+    activate:
+      on-profile: uat

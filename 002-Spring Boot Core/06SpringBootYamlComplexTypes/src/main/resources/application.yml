@@ -1,0 +1,15 @@
+my:
+  book:
+    bname: SAM
+    authors:
+    - RAGHU
+    - ASHOK
+    - AJAY
+    versions:
+      v1: 3.2GA
+      v2: 4.1-SNAPSHOT
+      v3: 5.5-RELEASE
+    pob:
+      pid: 101
+      pcode: ABC
+      active: false

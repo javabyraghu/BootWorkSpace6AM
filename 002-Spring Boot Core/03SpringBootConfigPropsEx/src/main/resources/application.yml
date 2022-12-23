@@ -1,0 +1,17 @@
+my:
+  app:
+    active: true
+    data:
+      C1: ABC
+      C2: MNO
+      C3: XYZ
+    host: GmailServer
+    mob:
+      code: SMTP
+      details: SAMPLE
+    models:
+    - M1A
+    - M2B
+    - M3C
+    port: 589
+    username: ASHOKIT

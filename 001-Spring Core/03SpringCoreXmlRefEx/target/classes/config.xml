@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   
+   <bean id="dbObj" class="com.app.raghu.MyDbCon">
+   		<property name="driver" value="OracleDriver"/>
+   		<property name="url" value="JDBC-ORCL"/>
+   </bean>
+  
+   <bean id="jdbcObj" class="com.app.raghu.JdbcOpr">
+   		<property name="con" ref="dbObj"/>
+   </bean>
+   
+</beans>

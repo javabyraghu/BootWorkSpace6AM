@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="mobj" class="com.app.raghu.MyDetails">
+    	<property name="myinfo">
+    		<props>
+    			<prop key="A1">B1</prop>
+    			<prop key="A2">B2</prop>
+    			<prop key="A3">B3</prop>
+    			<prop key="A4"></prop>
+    		</props>
+    	</property>
+    	<property name="design">
+    		<map>
+    			<entry>
+    				<key>
+    					<value>101</value>
+    				</key>
+    				<value>AB</value>
+    			</entry>
+    			<entry key="102" value="MNO"/>
+    			<entry>
+    				<key>
+    					<value>103</value>
+    				</key>
+    				<null></null>
+    			</entry>
+    		</map>
+    	</property>
+    	<property name="data">
+    		<list>
+    			<value>A</value>
+    			<value>B</value>
+    			<null></null>
+    			<value>C</value>
+    			<value>B</value>
+    		</list>
+    	</property>
+    	<property name="models">
+    		<set>
+    			<value>M1</value>
+    			<null/>
+    			<value>M2</value>
+    			<value>M3</value>
+    			<value>M1</value>
+    		</set>
+    	</property>
+    </bean>
+
+</beans>

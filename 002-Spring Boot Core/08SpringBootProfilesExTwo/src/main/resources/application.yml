@@ -1,0 +1,8 @@
+my:
+  app:
+    db:
+      driver: ORACLE
+      url: JDBC-ORCL
+      username: RAGHU
+      password: ROOT
+      database: TESTDB
