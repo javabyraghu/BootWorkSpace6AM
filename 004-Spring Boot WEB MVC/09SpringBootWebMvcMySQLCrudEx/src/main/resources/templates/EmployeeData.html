@@ -1,0 +1,32 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+	<head>
+		<title>Data Page</title>
+	</head>
+	<body>
+		<h3> EMPLOYEE DATA PAGE </h3>
+		<table border="1">
+			<tr>
+				<th>ID</th>
+				<th>NAME</th>
+				<th>GENDER</th>
+				<th>SALARY</th>
+				<th>DEPARTMENT</th>
+				<th>ADDRESS</th>
+				<th>OPERATIONS</th>
+			</tr>
+			<!-- for(Employee ob:list) {} -->
+			<tr th:each="ob:${list}">
+				<td>[[${ob.empId}]]</td>
+				<td>[[${ob.empName}]]</td>
+				<td>[[${ob.empGen}]]</td>
+				<td>[[${ob.empSal}]]</td>
+				<td>[[${ob.empDept}]]</td>
+				<td>[[${ob.empAddr}]]</td>
+				<td>
+					<a th:href="@{/employee/delete(id=${ob.empId})}">DELETE</a> |	<a th:href="@{/employee/edit(id=${ob.empId})}">EDIT</a>
+				</td>
+			</tr>
+		</table>
+		[[${message}]]
+	</body>
+</html>

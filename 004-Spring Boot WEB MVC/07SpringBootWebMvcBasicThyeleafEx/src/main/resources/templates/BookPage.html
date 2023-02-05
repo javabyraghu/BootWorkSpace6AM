@@ -1,0 +1,14 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+	<head>
+		<title>EXAMPLE</title>
+		<link th:href="@{/css/mycssfile.css}" rel="stylesheet"/>
+		<script type="text/javascript" th:src="@{/js/myinfo.js}"></script>
+	</head>
+	<body>
+		<img th:src="@{/images/iphone14pro.png}" width="80" height="100"/>
+		<h3 class="mydeg"> Data is : [[ ${message} ]]</h3>
+		<div th:text="${message}"></div>
+		
+		<a th:href="@{/data}">Goto Home Page</a>
+	</body>
+</html>

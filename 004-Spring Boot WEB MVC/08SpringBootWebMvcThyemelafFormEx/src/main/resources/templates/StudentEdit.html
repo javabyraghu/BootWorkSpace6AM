@@ -1,0 +1,24 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+	<head>
+		<title> EDIT PAGE </title>
+	</head>
+	<body>
+		<h3>WELCOME TO EDIT PAGE </h3>
+		<form th:action="@{/student/update}" method="POST" th:object="${student}">
+		<pre>
+			ID  : <input type="text" th:field="*{stdId}"/>
+			NAME:<input type="text" th:field="*{stdName}"/>
+			FEE :<input type="text" th:field="*{stdFee}"/>
+			COURSE:
+				<select th:field="*{stdCourse}">
+					<option value="-">-SELECT-</option>
+					<option th:each="cob:${courses}"
+						th:text="${cob}"
+						th:value="${cob}"
+					/>
+				</select>
+				<input type="submit" value="Update Data"/>
+		</pre>
+		</form>
+	</body>
+</html>
