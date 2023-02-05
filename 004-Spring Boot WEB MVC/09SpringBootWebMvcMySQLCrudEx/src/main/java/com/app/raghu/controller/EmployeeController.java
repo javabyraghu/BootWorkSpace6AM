@@ -1,8 +1,9 @@
 package com.app.raghu.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,14 +18,16 @@ import com.app.raghu.exception.EmployeeNotFoundException;
 import com.app.raghu.service.IEmployeeService;
 
 @Controller
-@RequestMapping("/employee")
+//@RequestMapping("/employee")
+@RequestMapping({"/employee","/"})
 public class EmployeeController {
 
 	@Autowired
 	private IEmployeeService service;
 	
 	//1. display register page
-	@GetMapping("/register")
+	//@GetMapping("/register")
+	@GetMapping({"/register","/"})
 	public String showRegsiter() {
 		return "EmployeeRegister";
 	}
@@ -47,7 +50,7 @@ public class EmployeeController {
 	}
 	
 	//3. get All Rows From DB and display as HTML table
-	@GetMapping("/all")
+	/*@GetMapping("/all")
 	public String showAll(
 			@RequestParam(required = false) String message,
 			Model model) 
@@ -57,6 +60,26 @@ public class EmployeeController {
 
 		//send this data to UI/View
 		model.addAttribute("list", list);
+		model.addAttribute("message", message);
+		
+		//goto UI Page
+		return "EmployeeData";
+	}*/
+	
+	//new pagination based all method code
+	// .../all?page=__&size=__
+	@GetMapping("/all")
+	public String showAll(
+			@PageableDefault(page = 0, size=3) Pageable pageable,
+			@RequestParam(required = false) String message,
+			Model model) 
+	{
+		//fetch data from DB using service
+		Page<Employee> page = service.getAllEmployees(pageable);
+
+		//send this data to UI/View
+		model.addAttribute("list", page.getContent());
+		model.addAttribute("page", page);
 		model.addAttribute("message", message);
 		
 		//goto UI Page

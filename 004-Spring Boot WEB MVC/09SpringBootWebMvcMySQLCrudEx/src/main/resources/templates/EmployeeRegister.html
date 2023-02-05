@@ -1,24 +1,69 @@
 <html xmlns:th="https://www.thymeleaf.org/">
-	<head>
-		<title>Register Page</title>
-	</head>
-	<body>
-	<pre>
-		<h3> EMPLOYEE REGISTER PAGE </h3>
-		<form th:action="@{/employee/save}" method="POST">
-			NAME : <input type="text" name="empName"/>
-			GENDER : <input type="radio" name="empGen" value="Male"/> Male <input type="radio" name="empGen" value="Female"/> Female
-			SAL : <input type="text" name="empSal"/>
-			DEPT : <select name="empDept">
+
+<head>
+	<title>Register Page</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">EMPLOYEE APPLICATION</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/}">REGISTER </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/employee/all}">VIEW ALL</a>
+      </li>
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+          OPTIONS
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" th:href="@{/}">REGISTER </a>
+          <a class="dropdown-item" th:href="@{/employee/all}">VIEW ALL</a>
+        </div>
+      </li>
+    </ul>
+    
+  </div>
+</nav>
+
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-primary text-white text-center">
+				<h3> EMPLOYEE REGISTER PAGE </h3>
+			</div>
+			<div class="card-body">
+				<form th:action="@{/employee/save}" method="POST">
+					NAME  <input type="text" name="empName" class="form-control" />
+					GENDER <input type="radio" name="empGen" value="Male" /> Male 
+						<input type="radio" name="empGen" value="Female" /> Female <br/>
+					SALARY  <input type="number" name="empSal" class="form-control"/>
+					DEPT : <select name="empDept" class="form-control">
 						<option value="">-SELECT-</option>
 						<option value="DEV">DEV</option>
 						<option value="QA">QA</option>
 						<option value="BA">BA</option>
-				</select>
-			ADDRESS : <textarea name="empAddr"></textarea>
-			<input type="submit" value="Create"/>
-		</form>
-	</pre>
-		[[${message}]]
-	</body>
+					</select>
+					ADDRESS : <textarea name="empAddr" class="form-control"></textarea > <br/>
+					<input type="submit" value="Create" class="btn btn-info" />
+				</form>
+			</div>
+			<div class="card-footer bg-success text-center text-white" th:if="${message}">
+				[[${message}]]
+			</div>
+		</div>
+		<!--card  ends-->
+	</div>
+</body>
+
 </html>

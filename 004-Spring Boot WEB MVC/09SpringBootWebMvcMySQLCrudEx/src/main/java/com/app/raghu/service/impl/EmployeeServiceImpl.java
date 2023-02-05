@@ -3,6 +3,8 @@ package com.app.raghu.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.app.raghu.entity.Employee;
@@ -50,6 +52,12 @@ public class EmployeeServiceImpl implements IEmployeeService {
 			repo.save(e);
 		else 
 			throw new EmployeeNotFoundException("EMPLOYEE '"+e.getEmpId()+"' NOT EXIST");
+	}
+	
+	@Override
+	public Page<Employee> getAllEmployees(Pageable pageable) {
+		Page<Employee> page = repo.findAll(pageable);
+		return page;
 	}
 
 }
