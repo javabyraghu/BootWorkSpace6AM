@@ -2,6 +2,8 @@ package com.app.raghu.rest;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +21,7 @@ import com.app.raghu.exception.StudentNotFoundException;
 import com.app.raghu.service.IStudentService;
 
 @RestController
-@RequestMapping("/student") 
+@RequestMapping("/v1/api/student") 
 public class StudentRestController {
 
 	@Autowired
@@ -27,7 +29,7 @@ public class StudentRestController {
 	
 	@PostMapping("/save")
 	public ResponseEntity<String> saveStudent(
-			@RequestBody Student student) 
+			@RequestBody @Valid Student student) 
 	{
 		Integer id = service.saveStudent(student);
 		return new ResponseEntity<String>(
@@ -35,6 +37,7 @@ public class StudentRestController {
 	}
 	
 	@GetMapping("/all")
+	//@ApiOperation("FETCH ALL STUDENTS FORM APPLICATION")
 	public ResponseEntity<List<Student>> getAllStudents() {
 		List<Student> list = service.getAllStudents();
 		return new ResponseEntity<List<Student>>(list, HttpStatus.OK);
@@ -52,13 +55,13 @@ public class StudentRestController {
 			
 		} catch (StudentNotFoundException snfe) {
 			snfe.printStackTrace();
-			response = new ResponseEntity<String>(
-					snfe.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);//500
+			throw snfe;
 		}
 		return response;
 	}
 	
 	@DeleteMapping("/remove/{id}")
+	//@ApiIgnore // Please dont show this AT Swagger
 	public ResponseEntity<String> deleteStudent(
 			@PathVariable Integer id)
 	{
@@ -70,9 +73,7 @@ public class StudentRestController {
 			
 		} catch (StudentNotFoundException e) {
 			e.printStackTrace();
-			response = new ResponseEntity<String>(
-					e.getMessage(), 
-					HttpStatus.INTERNAL_SERVER_ERROR);//500
+			throw e;
 		}
 		return response;
 	}
@@ -89,11 +90,9 @@ public class StudentRestController {
 					"Student '"+student.getStdId()+"' Update",
 					HttpStatus.OK);
 			
-		} catch (StudentNotFoundException e) {
-			e.printStackTrace();
-			response = new ResponseEntity<String>(
-					e.getMessage(), 
-					HttpStatus.INTERNAL_SERVER_ERROR);//500
+		} catch (StudentNotFoundException snfe) {
+			snfe.printStackTrace();
+			throw snfe;
 		}
 		return response;
 	}
