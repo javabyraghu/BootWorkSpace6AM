@@ -2,8 +2,6 @@ package com.app.raghu.rest;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +27,7 @@ public class StudentRestController {
 	
 	@PostMapping("/save")
 	public ResponseEntity<String> saveStudent(
-			@RequestBody @Valid Student student) 
+			@RequestBody Student student) 
 	{
 		Integer id = service.saveStudent(student);
 		return new ResponseEntity<String>(
@@ -37,7 +35,6 @@ public class StudentRestController {
 	}
 	
 	@GetMapping("/all")
-	//@ApiOperation("FETCH ALL STUDENTS FORM APPLICATION")
 	public ResponseEntity<List<Student>> getAllStudents() {
 		List<Student> list = service.getAllStudents();
 		return new ResponseEntity<List<Student>>(list, HttpStatus.OK);
@@ -61,7 +58,6 @@ public class StudentRestController {
 	}
 	
 	@DeleteMapping("/remove/{id}")
-	//@ApiIgnore // Please dont show this AT Swagger
 	public ResponseEntity<String> deleteStudent(
 			@PathVariable Integer id)
 	{
@@ -87,7 +83,7 @@ public class StudentRestController {
 		try {
 			service.updateStudent(student);
 			response = new ResponseEntity<String>(
-					"Student '"+student.getStdId()+"' Updated",
+					"Student '"+student.getStdId()+"' Update",
 					HttpStatus.OK);
 			
 		} catch (StudentNotFoundException snfe) {
