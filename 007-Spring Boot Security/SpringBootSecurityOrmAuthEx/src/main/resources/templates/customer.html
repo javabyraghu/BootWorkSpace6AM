@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html  xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Hello World!</title>
+    </head>
+    <body>
+        <h1>Welcome to CUSTOMER</h1>
+        <form th:action="@{/logout}" method="POST">
+        	<input type="submit" value="Logout"/>
+        </form>
+    </body>
+</html>
