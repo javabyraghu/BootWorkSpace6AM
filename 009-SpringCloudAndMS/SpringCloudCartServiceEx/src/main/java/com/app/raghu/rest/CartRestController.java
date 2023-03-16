@@ -1,6 +1,5 @@
 package com.app.raghu.rest;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,12 +14,10 @@ import com.app.raghu.bean.CartInfo;
 @RefreshScope
 public class CartRestController {
 	
-	@Value("${my.app.title}")
-	private String title;
 
 	@GetMapping("/message")
 	public ResponseEntity<String> showMsgFromCart() {
-		return ResponseEntity.ok(":: FROM CART SERVICE :: " + title);
+		return ResponseEntity.ok(":: FROM CART SERVICE :: " );
 	}
 	
 	@GetMapping("/info/{code}")
