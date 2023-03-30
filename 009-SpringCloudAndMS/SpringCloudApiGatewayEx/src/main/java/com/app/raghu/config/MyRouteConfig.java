@@ -18,6 +18,10 @@ public class MyRouteConfig {
 							)
 				.route("orderServiceApp", 
 							r-> r.path("/order/**")
+								  .filters(f->f.addRequestHeader("Authorization", "JWT TOKEN IS RECEIVED")
+										  .addResponseHeader("PaymentService", "APPROVED BY VENDOR WITH CODE 12345")
+										  )
+								  
 								 .uri("lb://ORDER-SERVICE")
 							)
 				.build();
